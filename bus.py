@@ -38,7 +38,7 @@ sBus = "N\A"
 while True:
 	buttonState = GPIO.input(12)
 	if buttonState == False:
-		
+		print "button pressed"
 		#get murray stop info
 		mydict = api.predictions(murrayID, maxpredictions=1)
 		info = mydict["prd"]
