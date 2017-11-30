@@ -3,6 +3,13 @@ from collections import OrderedDict
 from datetime import datetime, date, time
 import math
 import Adafruit_CharLCD as LCD
+import RPi.GPIO as GPIO
+
+#button setup
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(18, GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
+buttonState = GPIO.input(18)
 
 #lcd setup
 lcd_rs = 25
