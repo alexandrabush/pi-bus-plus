@@ -21,7 +21,7 @@ def hardwareSetup():
 
 	#Sets up the button
 	GPIO.setmode(GPIO.BCM)
-	GPIO.setup(18, GPIO.IN,pull_up_down=GPIO.PUD_UP)
+	GPIO.setup(12, GPIO.IN,pull_up_down=GPIO.PUD_UP)
 
 	#Sets up the LCD display
 	lcd_rs = 25
@@ -91,9 +91,12 @@ shadyID  = 7233
 
 #Poll button for input; on click, update bus info
 while True:
-	buttonState = GPIO.input(18)
+	buttonState = GPIO.input(12)
 
 	if buttonState == False:
+
+		#for debugging
+		print "button pressed"
 
 		# get the info on next arrivals
 		mArrival, mBus = getNextBus(murrayID, api)
