@@ -5,13 +5,13 @@ import math
 import Adafruit_CharLCD as LCD
 
 #lcd setup
-lcd_rs        = 25 
-lcd_en        = 24
-lcd_d4        = 23
-lcd_d5        = 17
-lcd_d6        = 18
-lcd_d7        = 22
-lcd_backlight = 4
+lcd_rs = 25
+lcd_en = 24
+lcd_d4 = 23
+lcd_d5 = 17
+lcd_d6 = 18
+lcd_d7 = 22
+lcd_backlight = 2
 lcd_columns = 16
 lcd_rows = 2
 
