@@ -68,6 +68,9 @@ def calcMinutesToArrival(arrivalTime):
 	#get current time
 	cTime = datetime.now().time()
 
+	# convert arrival time to the proper format
+	arrivalTime = datetime.strptime(arrivalTime, "%Y%m%d %H:%M:%S")
+
 	#calc minutes to arrival
 	minutes = datetime.combine(date.today(), arrivalTime.time()) - datetime.combine(date.today(), cTime)
 	minutes = math.floor(minutes.total_seconds()/60)
@@ -95,10 +98,6 @@ while True:
 		# get the info on next arrivals
 		mArrival, mBus = getNextBus(murrayID, api)
 		sArrival, sBus = getNextBus(shadyID, api)
-
-		# convert arrival times to the proper format
-		mArrival = datetime.strptime(mArrival, "%Y%m%d %H:%M:%S")
-		sArrival = datetime.strptime(sArrival, "%Y%m%d %H:%M:%S")
 
 		# calculate minutes until each bus arrives
 		mminutes = calcMinutesToArrival(mArrival)
