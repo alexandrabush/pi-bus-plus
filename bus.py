@@ -78,9 +78,9 @@ mminutes = math.floor(mminutes.total_seconds()/60)
 mminutes = math.trunc(mminutes)
 
 #print data
-lcd.begin(16,1)
+lcd.set_cursor(16,1)
 lcd.message("Murray: "+ mBus + "  " + str(mminutes) + "min")
-lcd.begin(16,2)
+lcd.set_cursor(16,2)
 lcd.message("Shady:  "+ sBus + "  " + str(sminutes) + "min")
 
 
