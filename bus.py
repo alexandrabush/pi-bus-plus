@@ -79,8 +79,8 @@ mminutes = math.trunc(mminutes)
 
 #print data
 lcd.set_cursor(0,0)
-lcd.message("Murray: "+ mBus + "  " + str(mminutes) + "min")
+lcd.message("Murray: "+ mBus + "  " + str(mminutes) + "m")
 lcd.set_cursor(0,1)
-lcd.message("Shady:  "+ sBus + "  " + str(sminutes) + "min")
+lcd.message("Shady:  "+ sBus + "  " + str(sminutes) + "m")
 
 
