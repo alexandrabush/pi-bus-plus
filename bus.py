@@ -8,12 +8,12 @@
 #
 #-----------------------------------------------------------------------------------------------------------
 
-from pghbustime import *
-from collections import OrderedDict
-from datetime import datetime, date, time
 import math
 import Adafruit_CharLCD as LCD
 import RPi.GPIO as GPIO
+from pghbustime import *
+from collections import OrderedDict
+from datetime import datetime, date, time
 
 #------------------------------------------------------------------------------------------------------------
 
@@ -36,7 +36,7 @@ def hardwareSetup():
 
 	lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
 	lcd.enable_display(True)
-	
+
 	return lcd
 
 #------------------------------------------------------------------------------------------------------------
