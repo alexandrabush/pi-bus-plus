@@ -1,3 +1,13 @@
+#-----------------------------------------------------------------------------------------------------------
+#
+#	Pi Bus Plus
+#	Gets next 2 bus ETAs and displays them on a 16x2 LCD
+#
+#	By Alexandra Bush
+#	Last Edited: 11.30.17
+#
+#-----------------------------------------------------------------------------------------------------------
+
 from pghbustime import *
 from collections import OrderedDict
 from datetime import datetime, date, time
@@ -6,6 +16,7 @@ import Adafruit_CharLCD as LCD
 import RPi.GPIO as GPIO
 
 #------------------------------------------------------------------------------------------------------------
+
 def hardwareSetup():
 
 	#Sets up the button
@@ -25,9 +36,11 @@ def hardwareSetup():
 
 	lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
 	lcd.enable_display(True)
+	
 	return lcd
 
 #------------------------------------------------------------------------------------------------------------
+
 def getNextBus(stopID, api):
 	
 	#Get stop info from the API
@@ -49,6 +62,7 @@ def getNextBus(stopID, api):
 	return arrival, bus
 
 #------------------------------------------------------------------------------------------------------------
+
 def calcMinutesToArrival(arrivalTime):
 
 	#get current time
@@ -67,13 +81,15 @@ def calcMinutesToArrival(arrivalTime):
 mykey = "KK6JMVmf2H3wSjkHXZ877bXWm"
 api = BustimeAPI(mykey)
 lcd = hardwareSetup()
+
 #Init stop IDs
 murrayID = 7096
 shadyID  = 7233
 
-#Poll button for input, on click, update bus info
+#Poll button for input; on click, update bus info
 while True:
 	buttonState = GPIO.input(18)
+
 	if buttonState == False:
 
 		# get the info on next arrivals
