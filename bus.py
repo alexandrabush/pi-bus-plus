@@ -17,7 +17,6 @@ lcd_rows = 2
 
 lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
 lcd.enable_display(True)
-lcd.message('Hello\nworld!')
 
 #setup
 mykey = "KK6JMVmf2H3wSjkHXZ877bXWm"
@@ -79,6 +78,9 @@ mminutes = math.floor(mminutes.total_seconds()/60)
 mminutes = math.trunc(mminutes)
 
 #print data
-print sBus + " arriving in " + str(sminutes) + " min at Starbucks stop"
-print mBus + " arriving in " + str(mminutes) + " min at Murray stop"
+lcd.begin(16,1)
+lcd.message("Murray: "+ mBus + "  " + str(mminutes) + "min")
+lcd.begin(16,2)
+lcd.message("Shady:  "+ sBus + "  " + str(sminutes) + "min")
+
 
