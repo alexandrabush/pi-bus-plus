@@ -2,6 +2,7 @@ from pghbustime import *
 from collections import OrderedDict
 from datetime import datetime, date, time
 import math
+import Adafruit_CharLCD as LCD
 
 
 #setup
@@ -66,3 +67,4 @@ mminutes = math.trunc(mminutes)
 #print data
 print sBus + " arriving in " + str(sminutes) + " min at Starbucks stop"
 print mBus + " arriving in " + str(mminutes) + " min at Murray stop"
+
