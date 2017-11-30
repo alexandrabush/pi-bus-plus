@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 
 #button setup
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(18, GPIO.IN,pull_up_down=GPIO.PUD_UP)
+GPIO.setup(12, GPIO.IN,pull_up_down=GPIO.PUD_UP)
 
 #lcd setup
 lcd_rs = 25
@@ -36,7 +36,7 @@ sArrival = "N\A"
 sBus = "N\A"
 
 while True:
-	buttonState = GPIO.input(18)
+	buttonState = GPIO.input(12)
 	if buttonState == False:
 		
 		#get murray stop info
