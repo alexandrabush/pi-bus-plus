@@ -13,15 +13,13 @@ import Adafruit_CharLCD as LCD
 import RPi.GPIO as GPIO
 from pghbustime import *
 from collections import OrderedDict
+from button import *
 import datetime
 import time
+
 #------------------------------------------------------------------------------------------------------------
 
 def hardwareSetup():
-
-	#Sets up the button
-	GPIO.setmode(GPIO.BCM)
-	GPIO.setup(12, GPIO.IN,pull_up_down=GPIO.PUD_UP)
 
 	#Sets up the LCD display
 	lcd_rs = 25
@@ -84,6 +82,7 @@ def calcMinutesToArrival(arrivalTime):
 mykey = "KK6JMVmf2H3wSjkHXZ877bXWm"
 api = BustimeAPI(mykey)
 lcd = hardwareSetup()
+button = Button(12)
 
 #Init stop IDs
 murrayID = 7096
@@ -91,9 +90,7 @@ shadyID  = 7233
 
 #Poll button for input; on click, update bus info
 while True:
-	buttonState = GPIO.input(12)
-
-	if buttonState == False:
+	if button.is_pressed():
 
 		#for debugging
 		print "button pressed"
