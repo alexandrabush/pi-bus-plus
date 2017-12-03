@@ -13,8 +13,8 @@ import Adafruit_CharLCD as LCD
 import RPi.GPIO as GPIO
 from pghbustime import *
 from collections import OrderedDict
-from datetime import datetime, date, time
-
+import datetime
+import time
 #------------------------------------------------------------------------------------------------------------
 
 def hardwareSetup():
@@ -42,11 +42,11 @@ def hardwareSetup():
 #------------------------------------------------------------------------------------------------------------
 
 def getNextBus(stopID, api):
-	
+
 	#Get stop info from the API
 	mydict = api.predictions(stopID, maxpredictions=1)
 	info = mydict["prd"]
-	
+
 	#set up vars
 	arrival = "n/a"
 	bus = "n/a"
@@ -66,13 +66,13 @@ def getNextBus(stopID, api):
 def calcMinutesToArrival(arrivalTime):
 
 	#get current time
-	cTime = datetime.now().time()
+	cTime = datetime.datetime.now().time()
 
 	# convert arrival time to the proper format
-	arrivalTime = datetime.strptime(arrivalTime, "%Y%m%d %H:%M:%S")
+	arrivalTime = datetime.datetime.strptime(arrivalTime, "%Y%m%d %H:%M:%S")
 
 	#calc minutes to arrival
-	minutes = datetime.combine(date.today(), arrivalTime.time()) - datetime.combine(date.today(), cTime)
+	minutes = datetime.datetime.combine(datetime.date.today(), arrivalTime.time()) - datetime.datetime.combine(datetime.date.today(), cTime)
 	minutes = math.floor(minutes.total_seconds()/60)
 	minutes = math.trunc(minutes)
 
@@ -107,6 +107,9 @@ while True:
 		sminutes = calcMinutesToArrival(sArrival)
 
 		#print bus data to lcd
+		lcd.clear()
+		lcd.message("Refreshing...")
+		time.sleep(1)
 		lcd.set_cursor(0,0) #first row
 		lcd.message("Murray: "+ mBus + "  " + str(mminutes) + "m")
 		lcd.set_cursor(0,1) #second row
